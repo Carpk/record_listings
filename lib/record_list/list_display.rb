@@ -1,9 +1,8 @@
 class ListDisplay
 
-  def show(data)
+  def self.show(data)
     data.each do |line|
-      print line.inspect
-      puts
+      puts line.inspect
     end
   end
 end

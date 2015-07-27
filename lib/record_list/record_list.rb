@@ -2,7 +2,6 @@ class RecordList
 
   def initialize
     @parser = FileParser.new(['data/comma_listed', 'data/pipe_listed', 'data/space_listed'])
-    @view = ListDisplay.new
   end
 
   def run
@@ -13,6 +12,10 @@ class RecordList
       people_list << Person.new(personel_data)
     end
 
-    @view.show(people_list)
+    # SortRecord.by_gender
+    # SortRecord.by_birthdate
+    # SortRecord.by_last_name
+
+    ListDisplay.show(SortList.by_gender(people_list))
   end
 end
