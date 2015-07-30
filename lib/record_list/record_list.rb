@@ -12,10 +12,6 @@ class RecordList
       people_list << Person.new(personel_data)
     end
 
-    # SortRecord.by_gender
-    # SortRecord.by_birthdate
-    # SortRecord.by_last_name
-
-    ListDisplay.show(SortList.by_gender(people_list))
+    ListDisplay.show(SortList.by_birthdate(people_list))
   end
 end
