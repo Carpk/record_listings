@@ -4,6 +4,7 @@ RSpec.describe "File Parser" do
 
   before(:example) do
     @parser = FileParser.new(['spec/test_data_single_sample', 'spec/test_data_multiple_samples'])
+    @data = "Kaku Michio Make Green 1 24 1947"
   end
 
   it "should create the correct class" do
@@ -60,35 +61,31 @@ RSpec.describe "File Parser" do
     expect(@parser.remove_whitespace(data_array)).to eq(finished_array)
   end
 
-  xit "should return single array with no new line" do
-    data = "Kaku Michio Green"
-    finished_array = []
-    expect(@parser.extract_data(data)).to eq(finished_array)
+  it "should return single array with no new line" do
+    person_array = @parser.extract_data(@data)
+    expect(person_array.last.last_name).to eq("Kaku")
   end
 
-  xit "should break up data on new line" do
-    data = "Kaku Michio Green \n Feynman Richard Blue"
-    finished_array = [["Kaku", "Michio", "Green"], ["Feynman", "Richard", "Blue"]]
-    expect(@parser.extract_data(data)).to eq(finished_array)
+  it "should break up data on new line" do
+    data = "Kaku Michio Male Green 1 24 1947\n Feynman Richard Male Blue 5 11 1918"
+    people_array = @parser.extract_data(data)
+    expect(people_array.last.last_name).to eq("Feynman")
   end
 
-  xit "should read singe line test file" do
+  it "should read singe line test file" do
     filename = 'spec/test_data_single_sample'
-    finished_array = [["Hicks", "Bill", "Male", "Green", "12", "16", "1961"]]
-    expect(@parser.read_file(filename)).to eq(finished_array)
+    finished_array = @parser.read_file(filename)
+    expect(finished_array.first.last_name).to eq("Hicks")
   end
 
-  xit "should read multiple line test file" do
+  it "should read multiple line test file" do
     filename = 'spec/test_data_multiple_samples'
-    finished_array = [["Kaku", "Michio", "Male", "Green", "1", "24", "1967"],
-                      ["Feynman", "Richard", "Male", "Blue", "5", "11", "1918"]]
-    expect(@parser.read_file(filename)).to eq(finished_array)
+    finished_array = @parser.read_file(filename)
+    expect(finished_array.last.last_name).to eq("Feynman")
   end
 
-  xit "should read test files from initialize" do
-    finished_array = [["Hicks", "Bill", "Male", "Green", "12", "16", "1961"],
-                      ["Kaku", "Michio", "Male", "Green", "1", "24", "1967"],
-                      ["Feynman", "Richard", "Male", "Blue", "5", "11", "1918"]]
-    expect(@parser.load_listed).to eq(finished_array)
+  it "should read test files from initialize" do
+    finished_array = @parser.load_listed
+    expect(finished_array.last.last_name).to eq("Feynman")
   end
 end
