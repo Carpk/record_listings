@@ -7,7 +7,7 @@ class Person
     @first_name = personel_data[1]
     @gender = personel_data[2]
     @fav_color = personel_data[3]
-    @birthdate = personel_data[4..6]
+    @birthdate = personel_data[4]
   end
 
 end

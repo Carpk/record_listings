@@ -4,9 +4,9 @@ RSpec.describe "Sort List" do
 
 
   before(:example) do
-    @people_list = [Person.new(["Hicks", "Bill", "Male", "Green", "12", "16", "1961"]),
-                    Person.new(["Schumer", "Amy", "Female", "Pink", "6", "1", "1981"]),
-                    Person.new(["Black", "Lewis", "Male", "Black", "8", "30", "1948"])]
+    @people_list = [Person.new(["Hicks", "Bill", "Male", "Green", Date.new(1961, 1, 16)]),
+                    Person.new(["Schumer", "Amy", "Female", "Pink", Date.new(1981, 6, 1)]),
+                    Person.new(["Black", "Lewis", "Male", "Black", Date.new(1948, 8, 30)])]
   end
 
   it "should sort list by gender" do

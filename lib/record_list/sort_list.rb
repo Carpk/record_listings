@@ -15,10 +15,6 @@ class SortList
   end
 
   def self.by_birthdate(records)
-    records.each_with_index do |record,index|
-      date_array = record.birthdate
-      records[index].birthdate = Date.new(date_array[2].to_i,date_array[0].to_i,date_array[1].to_i)
-    end
     records.sort_by! {|record| record.birthdate}
   end
 

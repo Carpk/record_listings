@@ -17,8 +17,11 @@ class FileParser
   def extract_data(file)
     content = []
     file.each_line do |line|
-      data_array = remove_delimiters(line)
-      content << remove_whitespace(data_array)
+      raw_array = remove_delimiters(line)
+      data_array = remove_whitespace(raw_array)
+      date = data_array[4..6]
+      data_array[4..6] = Date.new(date[2].to_i,date[0].to_i,date[1].to_i)
+      content << Person.new(data_array)
     end
     content
   end
