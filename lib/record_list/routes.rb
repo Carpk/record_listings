@@ -19,11 +19,14 @@ module Routes
       get :name do
         RecordList.new.load_by_lastname
       end
-    end
 
-    desc "Adds a new record to the list."
-    post :name do
-      RecordList.new.load_by_lastname
+      desc "Adds a new record to the list."
+      params do
+        requires :record, type: String, desc: "Your records."
+      end
+      post do
+        puts params
+      end
     end
   end
 end

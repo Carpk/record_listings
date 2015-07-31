@@ -1,5 +1,6 @@
 class Person
   attr_reader :last_name, :first_name, :gender, :fav_color, :birthdate
+  attr_writer :birthdate
 
   def initialize(personel_data)
     @last_name = personel_data[0]

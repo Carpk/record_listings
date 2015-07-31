@@ -9,7 +9,7 @@ class ListDisplay
   def self.html_display(data)
     string_array = []
     data.each do |line|
-      string_array << "#{line.last_name}, #{line.first_name}, #{line.gender}, #{line.fav_color}, #{line.birthdate.join("/")}"
+      string_array << "#{line.last_name}, #{line.first_name}, #{line.gender}, #{line.fav_color}, #{line.birthdate}"
     end
     string_array
   end
