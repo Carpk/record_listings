@@ -13,8 +13,8 @@ Run the following commands from the root directory:
 2)`rackup bin/config.ru`
 
 
-[GET /records/gender](localhost:9292/records/gender)
+[GET /records/gender](http://localhost:9292/records/gender)
 
-[GET /records/birthdate](localhost:9292/records/birthdate)
+[GET /records/birthdate](http://localhost:9292/records/birthdate)
 
-[GET /records/name](localhost:9292/records/name)
+[GET /records/name](http://localhost:9292/records/name)
