@@ -58,18 +58,22 @@ class SortList
     ordered_list
   end
 
+  def self.list_by_lastname(ordered_list, record)
+    ordered_list.each_with_index do |ordered_record, index|
+      if ordered_record == "empty"
+        ordered_list[index] = record
+        break
+      elsif ordered_record.last_name[0].ord > record.last_name[0].ord
+        ordered_list.insert(index, record).pop
+        break
+      end
+    end
+  end
+
   def self.by_lastname(records)
     ordered_list = Array.new(records.length, "empty")
     records.each do |record|
-      ordered_list.each_with_index do |ordered_record, index|
-        if ordered_record == "empty"
-          ordered_list[index] = record
-          break
-        elsif ordered_record.last_name[0].ord > record.last_name[0].ord
-          ordered_list.insert(index, record).pop
-          break
-        end
-      end
+      SortList.list_by_lastname(ordered_list, record)
     end
     ordered_list
   end
