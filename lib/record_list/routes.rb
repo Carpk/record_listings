@@ -2,9 +2,7 @@ require 'grape'
 
 module Routes
   class API < Grape::API
-    version 'v1', using: :header, vendor: 'record list'
     format :json
-    prefix :api
 
     resource :records do
       desc "Return gender ordered records."
@@ -21,6 +19,11 @@ module Routes
       get :name do
         RecordList.new.load_by_lastname
       end
+    end
+
+    desc "Adds a new record to the list."
+    post :name do
+      RecordList.new.load_by_lastname
     end
   end
 end

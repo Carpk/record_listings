@@ -114,13 +114,18 @@ RSpec.describe "Sort List" do
     expect(ordered_array.last.last_name).to eq("New_Black")
   end
 
-  it "should sort list by by birthdates" do
+  it "should sort list by birthdates" do
     ordered_array = SortList.by_birthdate(@people_list)
     expect(ordered_array.last.last_name).to eq("Schumer")
   end
 
-  it "should sort list by by birthdates" do
+  it "should sort list by birthdates" do
     ordered_array = SortList.by_birthdate(@people_list)
+    expect(ordered_array.first.last_name).to eq("Black")
+  end
+
+  it "should sort list by last name" do
+    ordered_array = SortList.by_lastname(@people_list)
     expect(ordered_array.first.last_name).to eq("Black")
   end
 end
