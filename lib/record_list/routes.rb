@@ -25,7 +25,7 @@ module Routes
         requires :record, type: String, desc: "Your records."
       end
       post do
-        puts params
+        RecordList.new.add_to_list(params[:record])
       end
     end
   end

@@ -23,6 +23,10 @@ class RecordList
     ListDisplay.html_display(sorted_list)
   end
 
+  def add_to_list(record)
+    @parser.add_to_file(record)
+  end
+
   def run
     people_list = @parser.load_listed
 

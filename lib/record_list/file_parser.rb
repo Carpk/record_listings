@@ -39,4 +39,8 @@ class FileParser
     end
     data
   end
+
+  def add_to_file(record)
+    File.open(@files_list.last, 'a') {|f| f << record }
+  end
 end
