@@ -1,34 +1,32 @@
-class RecordList
+require 'grape'
 
-  def initialize
-    @parser = FileParser.new(['data/comma_listed', 'data/pipe_listed', 'data/space_listed'])
-  end
+module RecordList
+  class API < Grape::API
+    format :json
 
-  def load_by_gender
-    people_list = @parser.load_listed
-    sorted_list = SortList.by_gender(people_list)
-    ListDisplay.html_display(sorted_list)
-  end
+    resource :records do
+      desc "Return gender ordered records."
+      get :gender do
+        Record.new.load_by_gender
+      end
 
-  def load_by_birthdate
-    people_list = @parser.load_listed
-    sorted_list = SortList.by_birthdate(people_list)
-    ListDisplay.html_display(sorted_list)
-  end
+      desc "Return birthdate ordered records."
+      get :birthdate do
+        Record.new.load_by_birthdate
+      end
 
-  def load_by_lastname
-    people_list = @parser.load_listed
-    sorted_list = SortList.by_lastname(people_list)
-    ListDisplay.html_display(sorted_list)
-  end
+      desc "Return last name ordered records."
+      get :name do
+        Record.new.load_by_lastname
+      end
 
-  def add_to_list(record)
-    @parser.add_to_file(record)
-  end
-
-  def run
-    people_list = @parser.load_listed
-
-    ListDisplay.show(SortList.by_birthdate(people_list))
+      desc "Adds a new record to the list."
+      params do
+        requires :record, type: String, desc: "Your records."
+      end
+      post do
+        Record.new.add_to_list(params[:record])
+      end
+    end
   end
 end

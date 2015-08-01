@@ -4,21 +4,21 @@ RSpec.describe "File Parser" do
 
   before(:example) do
     @parser = FileParser.new(['spec/test_data_single_sample', 'spec/test_data_multiple_samples'])
-    @data = "Kaku Michio Make Green 1 24 1947"
+    @data = "Kaku Michio Male Green 1 24 1947"
   end
 
-  it "should create the correct class" do
+  it "should create object of the correct class" do
     expect(@parser.class).to eq(FileParser)
   end
 
-  it "should return array from string" do
+  it "should return array from single spaced string" do
     raw_line = "Kaku Michio"
     finish_line = ["Kaku", "", "Michio", ""]
     expect(@parser.remove_delimiters(raw_line)).to eq(finish_line)
   end
 
 
-  it "should return array from string" do
+  it "should return array from multiple spaced string" do
     raw_line = "Kaku Michio Green"
     finish_line = ["Kaku", "", "Michio", "", "Green", ""]
     expect(@parser.remove_delimiters(raw_line)).to eq(finish_line)
