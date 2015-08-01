@@ -4,7 +4,6 @@ class RecordList
     @parser = FileParser.new(['data/comma_listed', 'data/pipe_listed', 'data/space_listed'])
   end
 
-
   def load_by_gender
     people_list = @parser.load_listed
     sorted_list = SortList.by_gender(people_list)
