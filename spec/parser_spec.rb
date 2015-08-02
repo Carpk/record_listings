@@ -3,8 +3,10 @@ require_relative "../lib/record_list/console.rb"
 RSpec.describe "File Parser" do
 
   before(:example) do
+    File.open('spec/test_data_single_sample', 'w') {|f| f << "Hicks Bill Male Green 12 16 1961\n"}
+    File.open('spec/test_data_multiple_samples', 'w') {|f| f << "Kaku Michio Male Green 1 24 1947\nFeynman Richard Male Blue 5 11 1918\n"}
     @parser = FileParser.new(['spec/test_data_single_sample', 'spec/test_data_multiple_samples'])
-    @data = "Kaku Michio Male Green 1 24 1947"
+    @data = "Kaku Michio Male Green 1 24 1947\n"
   end
 
   it "should create object of the correct class" do
@@ -87,5 +89,11 @@ RSpec.describe "File Parser" do
   it "should read test files from initialize" do
     finished_array = @parser.load_listed
     expect(finished_array.last.last_name).to eq("Feynman")
+  end
+
+  it "should add record to test file" do
+    record = "Bohr Niels Male Blue 10 7 1885\n"
+    @parser.add_to_file(record)
+    expect(@parser.load_listed.last.last_name).to eq("Bohr")
   end
 end
