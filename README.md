@@ -27,3 +27,7 @@ record="lastname firstname gender fav_color birthmonth birthday birthyear"
 Example:
 
 `curl --form record="Black Lewis Male Black 8 30 1948" http://localhost:9292/records`
+
+To run tests:
+
+`rake rspec'

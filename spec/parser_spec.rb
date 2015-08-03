@@ -92,7 +92,7 @@ RSpec.describe "File Parser" do
   end
 
   it "should add record to test file" do
-    record = "Bohr Niels Male Blue 10 7 1885\n"
+    record = "Bohr Niels Male Blue 10 7 1885"
     @parser.add_to_file(record)
     expect(@parser.load_listed.last.last_name).to eq("Bohr")
   end

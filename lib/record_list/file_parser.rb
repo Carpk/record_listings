@@ -41,6 +41,6 @@ class FileParser
   end
 
   def add_to_file(record)
-    File.open(@files_list.last, 'a') {|f| f << record }
+    File.open(@files_list.last, 'a') {|f| f << record + "\n"}
   end
 end

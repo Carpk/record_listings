@@ -1,7 +1,7 @@
 class Record
 
-  def initialize
-    @parser = FileParser.new(['data/comma_listed', 'data/pipe_listed', 'data/space_listed'])
+  def initialize(files=['data/comma_listed', 'data/pipe_listed', 'data/space_listed'])
+    @parser = FileParser.new(files)
   end
 
   def load_by_gender
