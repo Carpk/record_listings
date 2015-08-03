@@ -20,7 +20,7 @@ Use the following URL paths to query files:
 
 [GET /records/name](http://localhost:9292/records/name)
 
-To post a record, use curl in another terminal session, in the following format:
+To post a record, use curl in another terminal session, with the following format:
 
 record="lastname firstname gender fav_color birthmonth birthday birthyear"
 
