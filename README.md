@@ -31,3 +31,7 @@ Example:
 To run tests:
 
 `rake rspec'
+
+To run the application in terminal:
+
+`rake run`
