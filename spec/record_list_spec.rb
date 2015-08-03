@@ -33,12 +33,5 @@ describe RecordList::API do
         expect(JSON.parse(last_response.body).class).to eq(Array)
       end
     end
-    # describe "GET /records/birthdate" do
-    #   it "returns a status by id" do
-    #     status = Status.create!
-    #     get "/records/birthdate"
-    #     last_response.body.should == status.to_json
-    #   end
-    # end
   end
 end
