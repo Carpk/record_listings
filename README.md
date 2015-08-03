@@ -30,7 +30,7 @@ Example:
 
 To run tests:
 
-`rake rspec'
+`rake rspec`
 
 To run the application in terminal:
 
