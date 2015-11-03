@@ -4,22 +4,22 @@ class Record
     @parser = FileParser.new(files)
   end
 
-  def load_by_gender
+  def load_and_display
     people_list = @parser.load_listed
-    sorted_list = SortList.by_gender(people_list)
+    sorted_list = yield people_list
     ListDisplay.html_display(sorted_list)
+  end
+
+  def load_by_gender
+    load_and_display {|list| SortList.by_gender(list)}
   end
 
   def load_by_birthdate
-    people_list = @parser.load_listed
-    sorted_list = SortList.by_birthdate(people_list)
-    ListDisplay.html_display(sorted_list)
+    load_and_display {|list| SortList.by_birthdate(list)}
   end
 
   def load_by_lastname
-    people_list = @parser.load_listed
-    sorted_list = SortList.by_lastname(people_list)
-    ListDisplay.html_display(sorted_list)
+    load_and_display {|list| SortList.by_lastname(list)}
   end
 
   def add_to_list(record)
