@@ -1,6 +1,6 @@
 class Record
 
-  def initialize(files= RecordFiles::Files)
+  def initialize(files= RecordData::Location)
     @parser = FileParser.new(files)
   end
 
