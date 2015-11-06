@@ -1,25 +1,25 @@
 class Record
 
-  def initialize(files=['data/comma_listed', 'data/pipe_listed', 'data/space_listed'])
+  def initialize(files= RecordFiles::Files)
     @parser = FileParser.new(files)
   end
 
-  def load_and_display
+  def load_display
     people_list = @parser.load_listed
     sorted_list = yield people_list
     ListDisplay.html_display(sorted_list)
   end
 
   def load_by_gender
-    load_and_display {|list| SortList.by_gender(list)}
+    load_display {|list| SortList.by_gender(list)}
   end
 
   def load_by_birthdate
-    load_and_display {|list| SortList.by_birthdate(list)}
+    load_display {|list| SortList.by_birthdate(list)}
   end
 
   def load_by_lastname
-    load_and_display {|list| SortList.by_lastname(list)}
+    load_display {|list| SortList.by_lastname(list)}
   end
 
   def add_to_list(record)
