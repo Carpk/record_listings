@@ -10,7 +10,7 @@ Run the following commands from the root directory:
 
 1)`bundle`
 
-2)`rackup bin/config.ru`
+2)`rake server`
 
 Use the following URL paths to query files:
 
