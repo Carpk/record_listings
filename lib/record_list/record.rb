@@ -8,27 +8,20 @@ class Record
     @parser.add_to_file(record)
   end
 
-  def load_listing_type(list_type)
+  def load_listing(list_type)
     people_list = @parser.load_listed
-    if list_type == 1
-      SortList.by_gender(people_list)
-    elsif list_type == 2
-      SortList.by_birthdate(people_list)
-    elsif list_type == 3
-      SortList.by_lastname(people_list)
-    else
-      ListDisplay.entry_error
-      []
-    end
+    method_type = "by_" + list_type.downcase
+
+    SortList.send(method_type, people_list) if SortList.respond_to?(method_type)
   end
 
   def run
     ListDisplay.list_type_prompt
-    list_type = gets.chomp.to_i
+    list_type = gets.chomp
 
-    sorted_list = load_listing_type(list_type)
+    sorted_list = load_listing(list_type)
 
-    ListDisplay.terminal_display(sorted_list)
+    sorted_list ? ListDisplay.results(sorted_list) : ListDisplay.entry_error
   end
 
   def load_display

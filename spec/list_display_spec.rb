@@ -12,7 +12,7 @@ RSpec.describe "List Display" do
   end
 
   it "should list display options" do
-    text = "Please choose listing type:\n1) By gender\n2) By birthdate\n3) By lastname\n"
+    text = "Please choose listing type:\n- Gender\n- Birthdate\n- Lastname\n"
     expect{ListDisplay.list_type_prompt}.to output(text).to_stdout
   end
 
@@ -23,6 +23,6 @@ RSpec.describe "List Display" do
 
   it "should display single text line" do
     text = "Hicks, Bill, Male, Green, 1961-01-16\n"
-    expect{ListDisplay.terminal_display(@data)}.to output(text).to_stdout
+    expect{ListDisplay.results(@data)}.to output(text).to_stdout
   end
 end

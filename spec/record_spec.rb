@@ -12,6 +12,23 @@ RSpec.describe "Record" do
     expect(@record.class).to eq(Record)
   end
 
+  it "should not return a value" do
+    expect(@record.load_listing("nil")).to eq(nil)
+  end
+
+  it "should return an array" do
+    expect(@record.load_listing("gender").class).to eq(Array)
+  end
+
+  it "should return an array" do
+    expect(@record.load_listing("birthdate").class).to eq(Array)
+  end
+
+  it "should return an array" do
+    expect(@record.load_listing("lastname").class).to eq(Array)
+  end
+
+
   it "should order list by gender" do
     first_listed = "Hopper, Grace, Female, Red, 1906-12-09"
     expect(@record.by_gender.first).to eq(first_listed)
