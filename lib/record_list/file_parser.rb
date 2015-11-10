@@ -14,13 +14,17 @@ class FileParser
     data_array.reject { |e| e.to_s.empty? }
   end
 
+  def create_date(data_array)
+    date = data_array[4..6]
+    Date.new(date[2].to_i,date[0].to_i,date[1].to_i)
+  end
+
   def extract_data(file)
     content = []
     file.each_line do |line|
       raw_array = remove_delimiters(line)
       data_array = remove_whitespace(raw_array)
-      date = data_array[4..6]
-      data_array[4..6] = Date.new(date[2].to_i,date[0].to_i,date[1].to_i)
+      data_array[4..6] = create_date(data_array)
       content << Person.new(data_array)
     end
     content

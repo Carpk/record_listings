@@ -4,24 +4,6 @@ class Record
     @parser = FileParser.new(files)
   end
 
-  def load_display
-    people_list = @parser.load_listed
-    sorted_list = yield people_list
-    ListDisplay.html_display(sorted_list)
-  end
-
-  def load_by_gender
-    load_display {|list| SortList.by_gender(list)}
-  end
-
-  def load_by_birthdate
-    load_display {|list| SortList.by_birthdate(list)}
-  end
-
-  def load_by_lastname
-    load_display {|list| SortList.by_lastname(list)}
-  end
-
   def add_to_list(record)
     @parser.add_to_file(record)
   end
@@ -47,5 +29,18 @@ class Record
     sorted_list = load_listing_type(list_type)
 
     ListDisplay.terminal_display(sorted_list)
+  end
+
+  def load_display
+    people_list = @parser.load_listed
+    sorted_list = yield people_list
+    ListDisplay.html_display(sorted_list)
+  end
+
+  def method_missing(name, *args)
+    method_name = name.to_s
+    return super unless method_name =~ /^by_\w+/
+
+    load_display {|list| SortList.send(method_name, list)}
   end
 end

@@ -7,17 +7,17 @@ module RecordList
     resource :records do
       desc "Return gender ordered records."
       get :gender do
-        Record.new.load_by_gender
+        Record.new.by_gender
       end
 
       desc "Return birthdate ordered records."
       get :birthdate do
-        Record.new.load_by_birthdate
+        Record.new.by_birthdate
       end
 
       desc "Return last name ordered records."
       get :name do
-        Record.new.load_by_lastname
+        Record.new.by_lastname
       end
 
       desc "Adds a new record to the list."
