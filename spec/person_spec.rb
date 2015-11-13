@@ -11,11 +11,11 @@ RSpec.describe "Person" do
   end
 
   it "should create have correct last name" do
-    expect(@person.last_name).to eq("Hicks")
+    expect(@person.lastname).to eq("Hicks")
   end
 
   it "should create have correct first name" do
-    expect(@person.first_name).to eq("Bill")
+    expect(@person.firstname).to eq("Bill")
   end
 
   it "should create have correct gender" do
@@ -23,7 +23,7 @@ RSpec.describe "Person" do
   end
 
   it "should create have correct fovorite color" do
-    expect(@person.fav_color).to eq("Green")
+    expect(@person.favcolor).to eq("Green")
   end
 
   it "should create have correct birthmonth" do

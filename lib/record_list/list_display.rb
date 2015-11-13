@@ -4,7 +4,7 @@ class ListDisplay
     def html_display(data)
       string_array = []
       data.each do |line|
-        string_array << "#{line.last_name}, #{line.first_name}, #{line.gender}, #{line.fav_color}, #{line.birthdate}"
+        string_array << "#{line.lastname}, #{line.firstname}, #{line.gender}, #{line.favcolor}, #{line.birthdate}"
       end
       string_array
     end
@@ -22,7 +22,7 @@ class ListDisplay
 
     def results(data)
       data.each do |line|
-        puts "#{line.last_name}, #{line.first_name}, #{line.gender}, #{line.fav_color}, #{line.birthdate}"
+        puts "#{line.lastname}, #{line.firstname}, #{line.gender}, #{line.favcolor}, #{line.birthdate}"
       end
     end
   end

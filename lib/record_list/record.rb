@@ -10,14 +10,14 @@ class Record
 
   def load_listing(list_type)
     people_list = @parser.load_listed
-    method_type = "by_" + list_type.downcase
+    method_type = "by_" + list_type
 
-    SortList.send(method_type, people_list) if SortList.respond_to?(method_type)
+    SortList.send(method_type, people_list) if people_list.first.respond_to?(list_type)
   end
 
   def run
     ListDisplay.list_type_prompt
-    list_type = gets.chomp
+    list_type = gets.chomp.downcase
 
     sorted_list = load_listing(list_type)
 

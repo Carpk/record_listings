@@ -1,16 +1,11 @@
 class SortList
   class << self
 
-    def by_gender(records)
-      records.sort_by {|record| record.gender}
-    end
+    def method_missing(name, *args)
+      attribute = name.to_s.split('_')[1]
+      return super unless name =~ /^by_\w+/
 
-    def by_birthdate(records)
-      records.sort_by {|record| record.birthdate}
-    end
-
-    def by_lastname(records)
-      records.sort_by {|record| record.last_name}
+      args[0].sort_by {|record| record.send(attribute)}
     end
   end
 end

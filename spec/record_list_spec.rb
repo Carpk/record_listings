@@ -28,7 +28,7 @@ describe RecordList::API do
 
     describe "GET /records/name" do
       it "returns an array of name" do
-        get "/records/name"
+        get "/records/lastname"
         expect(last_response.status).to eq(200)
         expect(JSON.parse(last_response.body).class).to eq(Array)
       end

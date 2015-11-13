@@ -16,7 +16,7 @@ module RecordList
       end
 
       desc "Return last name ordered records."
-      get :name do
+      get :lastname do
         Record.new.by_lastname
       end
 

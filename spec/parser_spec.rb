@@ -65,35 +65,35 @@ RSpec.describe "File Parser" do
 
   it "should return single array with no new line" do
     person_array = @parser.extract_data(@data)
-    expect(person_array.last.last_name).to eq("Kaku")
+    expect(person_array.last.lastname).to eq("Kaku")
   end
 
   it "should break up data on new line" do
     data = "Kaku Michio Male Green 1 24 1947\n Feynman Richard Male Blue 5 11 1918"
     people_array = @parser.extract_data(data)
-    expect(people_array.last.last_name).to eq("Feynman")
+    expect(people_array.last.lastname).to eq("Feynman")
   end
 
   it "should read singe line test file" do
     filename = 'spec/test_data_single_sample'
     finished_array = @parser.read_file(filename)
-    expect(finished_array.first.last_name).to eq("Hicks")
+    expect(finished_array.first.lastname).to eq("Hicks")
   end
 
   it "should read multiple line test file" do
     filename = 'spec/test_data_multiple_samples'
     finished_array = @parser.read_file(filename)
-    expect(finished_array.last.last_name).to eq("Feynman")
+    expect(finished_array.last.lastname).to eq("Feynman")
   end
 
   it "should read test files from initialize" do
     finished_array = @parser.load_listed
-    expect(finished_array.last.last_name).to eq("Feynman")
+    expect(finished_array.last.lastname).to eq("Feynman")
   end
 
   it "should add record to test file" do
     record = "Bohr Niels Male Blue 10 7 1885"
     @parser.add_to_file(record)
-    expect(@parser.load_listed.last.last_name).to eq("Bohr")
+    expect(@parser.load_listed.last.lastname).to eq("Bohr")
   end
 end
