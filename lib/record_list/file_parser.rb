@@ -16,7 +16,7 @@ class FileParser
 
   def create_date(data_array)
     date = data_array[4..6]
-    Date.new(date[2].to_i,date[0].to_i,date[1].to_i)
+    Date.strptime(date.join('-'), '%m-%d-%Y')
   end
 
   def extract_data(file)
