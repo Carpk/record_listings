@@ -1,14 +1,6 @@
 class ListDisplay
   class << self
 
-    def html_display(data)
-      string_array = []
-      data.each do |line|
-        string_array << "#{line.lastname}, #{line.firstname}, #{line.gender}, #{line.favcolor}, #{line.birthdate}"
-      end
-      string_array
-    end
-
     def list_type_prompt
       puts "Please choose listing type:"
       puts "- Gender"

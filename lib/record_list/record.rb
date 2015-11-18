@@ -27,7 +27,7 @@ class Record
   def load_display
     people_list = @parser.load_listed
     sorted_list = yield people_list
-    ListDisplay.html_display(sorted_list)
+    ScreenUtility.display_list(sorted_list)
   end
 
   def method_missing(name, *args)
