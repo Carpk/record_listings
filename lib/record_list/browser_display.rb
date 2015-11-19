@@ -1,4 +1,4 @@
-class ScreenUtility
+class BrowserDisplay
 
     def self.display_list(data)
       string_array = []

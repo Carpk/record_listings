@@ -1,6 +1,6 @@
 require_relative 'file_parser'
-require_relative 'html_display'
-require_relative 'list_display'
+require_relative 'browser_display'
+require_relative 'terminal_display'
 require_relative 'person'
 require_relative 'record'
 require_relative 'record_list'

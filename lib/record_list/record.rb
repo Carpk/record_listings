@@ -16,18 +16,18 @@ class Record
   end
 
   def run
-    ListDisplay.list_type_prompt
+    TerminalDisplay.list_type_prompt
     list_type = gets.chomp.downcase
 
     sorted_list = load_listing(list_type)
 
-    sorted_list ? ListDisplay.results(sorted_list) : ListDisplay.entry_error
+    sorted_list ? TerminalDisplay.results(sorted_list) : TerminalDisplay.entry_error
   end
 
   def load_display
     people_list = @parser.load_listed
     sorted_list = yield people_list
-    ScreenUtility.display_list(sorted_list)
+    BrowserDisplay.display_list(sorted_list)
   end
 
   def method_missing(name, *args)
