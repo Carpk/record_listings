@@ -12,7 +12,7 @@ class Record
     people_list = @parser.load_listed
     method_type = "by_" + list_type
 
-    people_list.sort_by! {|record| record.send(load_type)} if people_list.first.respond_to?(list_type)
+    people_list.sort_by {|record| record.send(list_type)} if people_list.first.respond_to?(list_type)
   end
 
   def run
