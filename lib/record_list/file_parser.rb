@@ -2,7 +2,7 @@ require "csv"
 
 class FileParser
 
-  def initialize(files_list)
+  def initialize(files_list = RecordData::Location)
     @files_list = files_list
   end
 

@@ -4,15 +4,12 @@ class Record
     @parser = FileParser.new(files)
   end
 
-  def add_to_list(record)
-    @parser.add_to_file(record)
-  end
+  # Terminal methods
 
   def load_listing(list_type)
     people_list = @parser.load_listed
-    method_type = "by_" + list_type
 
-    people_list.sort_by {|record| record.send(list_type)} if people_list.first.respond_to?(list_type)
+    SortList.load_by(list_type, people_list) if people_list.first.respond_to?(list_type)
   end
 
   def run
@@ -22,6 +19,12 @@ class Record
     sorted_list = load_listing(list_type)
 
     sorted_list ? TerminalDisplay.results(sorted_list) : TerminalDisplay.entry_error
+  end
+
+  # Browser methods
+
+  def add_to_list(record)
+    @parser.add_to_file(record)
   end
 
   def load_display
@@ -36,4 +39,12 @@ class Record
 
     load_display {|list| SortList.send(method_name, list)}
   end
+
+  def self.run
+    FileParser.new(files) do |parser|
+      parser.load_listed
+    end
+  end
+
 end
+

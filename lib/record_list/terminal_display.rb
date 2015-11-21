@@ -13,8 +13,14 @@ class TerminalDisplay
     end
 
     def results(data)
+      attributes = data.first.instance_variables
+
       data.each do |line|
-        puts "#{line.lastname}, #{line.firstname}, #{line.gender}, #{line.favcolor}, #{line.birthdate}"
+        str = ""
+        attributes.each do |attribute|
+          str << %Q!#{line.send(attribute[1..-1])} !
+        end
+        puts str
       end
     end
   end

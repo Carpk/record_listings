@@ -7,6 +7,7 @@ module RecordList
     resource :records do
       desc "Return gender ordered records."
       get :gender do
+        puts params
         Record.new.by_gender
       end
 
