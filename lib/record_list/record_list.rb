@@ -7,18 +7,18 @@ module RecordList
     resource :records do
       desc "Return gender ordered records."
       get :gender do
-        puts params
-        Record.new.by_gender
+        p params.inspect
+        PortalRecord.sort_by(:gender)
       end
 
       desc "Return birthdate ordered records."
       get :birthdate do
-        Record.new.by_birthdate
+        PortalRecord.sort_by(:birthdate)
       end
 
       desc "Return last name ordered records."
       get :lastname do
-        Record.new.by_lastname
+        PortalRecord.sort_by(:lastname)
       end
 
       desc "Adds a new record to the list."
@@ -26,7 +26,7 @@ module RecordList
         requires :record, type: String, desc: "Your records."
       end
       post do
-        Record.new.add_to_list(params[:record])
+        PortalRecord.add_to_list(params[:record])
       end
     end
   end

@@ -1,4 +1,4 @@
-class BrowserDisplay
+class PortalDisplay
 
   def self.display_list(data)
     string_array = []
