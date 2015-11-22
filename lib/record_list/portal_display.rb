@@ -1,9 +1,10 @@
-class PortalDisplay
+class PortalDisplay < RecordDisplay
 
-  def self.display_list(data)
+  def self.display_list(list)
     string_array = []
-    data.each do |line|
-      string_array << "#{line.lastname}, #{line.firstname}, #{line.gender}, #{line.favcolor}, #{line.birthdate}"
+
+    list.each do |person|
+      string_array << self.create_string(line)
     end
     string_array
   end

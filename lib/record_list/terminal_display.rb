@@ -1,4 +1,4 @@
-class ConsoleDisplay
+class TerminalDisplay < RecordDisplay
   class << self
 
     def list_type_prompt
@@ -13,13 +13,8 @@ class ConsoleDisplay
     end
 
     def results(data)
-      attributes = data.first.instance_variables
-
       data.each do |line|
-        str = ""
-        attributes.each do |attribute|
-          str << %Q!#{line.send(attribute[1..-1])} !
-        end
+        str = self.create_string(line)
         puts str
       end
     end

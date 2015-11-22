@@ -6,6 +6,6 @@ class Person
     @firstname = record_data[1]
     @gender = record_data[2]
     @favcolor = record_data[3]
-    @birthdate = Date.strptime(record_data[4], '%m-%d-%Y')
+    @birthdate = record_data[4]
   end
 end
