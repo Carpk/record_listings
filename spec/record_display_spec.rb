@@ -8,7 +8,7 @@ RSpec.describe "Record Display" do
   end
 
   it "should list display options" do
-    text = "Hicks Bill Male Green 1961-01-16 "
+    text = "Hicks, Bill, Male, Green, 1961-01-16"
     expect(RecordDisplay.create_string(@data)).to eq(text)
   end
 
