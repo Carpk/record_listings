@@ -8,7 +8,7 @@ RSpec.describe "PortalRecord" do
 
     test_files = "module RecordData\n  Location = ['spec/test_data_multiple_samples']\nend\n"
     File.open('config.rb', 'w') {|f| f << test_files}
-    load "config.rb"
+    require_relative "../config.rb"
   end
 
   after(:context) do
@@ -18,19 +18,19 @@ RSpec.describe "PortalRecord" do
 
 
   # it "should not return a value" do
-  #   expect(@record.load_listing("nil")).to eq(nil)
+  #   expect(PortalRecord.load_listing("nil")).to eq(nil)
   # end
 
   # it "should return an array" do
-  #   expect(@record.load_listing("gender").class).to eq(Array)
+  #   expect(PortalRecord.load_listing("gender").class).to eq(Array)
   # end
 
   # it "should return an array" do
-  #   expect(@record.load_listing("birthdate").class).to eq(Array)
+  #   expect(PortalRecord.load_listing("birthdate").class).to eq(Array)
   # end
 
   # it "should return an array" do
-  #   expect(@record.load_listing("lastname").class).to eq(Array)
+  #   expect(PortalRecord.load_listing("lastname").class).to eq(Array)
   # end
 
 
@@ -66,9 +66,9 @@ RSpec.describe "PortalRecord" do
     expect(PortalRecord.sort_by("lastname").last).to eq(last_listed)
   end
 
-  # it "should add a new record" do
-  #   record = "Turning Alan Male Yellow 6 23 1912"
-  #   @record.add_to_list(record)
-  #   expect(@record.by_lastname.last).to eq("Turning, Alan, Male, Yellow, 1912-06-23")
-  # end
+  it "should add a new record" do
+    record = "Turning Alan Male Yellow 6 23 1912"
+    PortalRecord.add_to_list(record)
+    expect(PortalRecord.sort_by("lastname").last).to eq("Turning, Alan, Male, Yellow, 1912-06-23")
+  end
 end

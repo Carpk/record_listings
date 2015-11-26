@@ -8,7 +8,7 @@ RSpec.describe "Record" do
 
     test_files = "module RecordData\n  Location = ['spec/test_data_multiple_samples']\nend\n"
     File.open('config.rb', 'w') {|f| f << test_files}
-    load "config.rb"
+    require_relative "../config.rb"
   end
 
   after(:context) do

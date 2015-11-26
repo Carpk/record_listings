@@ -8,7 +8,7 @@ RSpec.describe "TerminalRecord" do
 
     test_files = "module RecordData\n  Location = ['spec/test_data_multiple_samples']\nend\n"
     File.open('config.rb', 'w') {|f| f << test_files}
-    load "config.rb"
+    require_relative "../config.rb"
   end
 
   after(:context) do
@@ -17,9 +17,9 @@ RSpec.describe "TerminalRecord" do
   end
 
 
-  # it "should not return a value" do
-  #   expect(@record.load_listing("nil")).to eq(nil)
-  # end
+  it "should not return a value" do
+    expect(TerminalRecord.load_listing("nil")).to eq(nil)
+  end
 
   it "should order list by gender" do
     expect(TerminalRecord.load_listing("gender").first.firstname).to eq("Grace")
@@ -45,9 +45,4 @@ RSpec.describe "TerminalRecord" do
     expect(TerminalRecord.load_listing("lastname").last.lastname).to eq("Kaku")
   end
 
-  # it "should add a new record" do
-  #   record = "Turning Alan Male Yellow 6 23 1912"
-  #   @record.add_to_list(record)
-  #   expect(@record.by_lastname.last).to eq("Turning, Alan, Male, Yellow, 1912-06-23")
-  # end
 end
