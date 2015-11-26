@@ -2,66 +2,25 @@ require_relative "../lib/record_list/console.rb"
 
 RSpec.describe "Record" do
 
-  before(:example) do
-    string = "Kaku Michio Male Green 1 24 1947\nHopper Grace Female Red 12 9 1906\nFeynman Richard Male Blue 5 11 1918\n"
-    File.open('spec/test_data_multiple_samples', 'w') {|f| f << string}
-    @record = Record.new(['spec/test_data_multiple_samples'])
+  before(:context) do
+    test_data = "Kaku Michio Male Green 1 24 1947\nHopper Grace Female Red 12 9 1906\nFeynman Richard Male Blue 5 11 1918\n"
+    File.open('spec/test_data_multiple_samples', 'w') {|f| f << test_data}
+
+    test_files = "module RecordData\n  Location = ['spec/test_data_multiple_samples']\nend\n"
+    File.open('config.rb', 'w') {|f| f << test_files}
+    load "config.rb"
   end
 
-  it "should create the correct class" do
-    expect(@record.class).to eq(Record)
+  after(:context) do
+    std_files = "module RecordData\n  Location = ['data/comma_listed', 'data/pipe_listed', 'data/space_listed']\nend\n"
+    File.open('config.rb', 'w') {|f| f << std_files}
   end
 
-  it "should not return a value" do
-    expect(@record.load_listing("nil")).to eq(nil)
+  it "should load the testing files" do
+    expect(Record.load_files.first.firstname).to eq("Michio")
   end
 
-  it "should return an array" do
-    expect(@record.load_listing("gender").class).to eq(Array)
-  end
-
-  it "should return an array" do
-    expect(@record.load_listing("birthdate").class).to eq(Array)
-  end
-
-  it "should return an array" do
-    expect(@record.load_listing("lastname").class).to eq(Array)
-  end
-
-
-  it "should order list by gender" do
-    first_listed = "Hopper, Grace, Female, Red, 1906-12-09"
-    expect(@record.by_gender.first).to eq(first_listed)
-  end
-
-  it "should order list by gender" do
-    last_listed = "Feynman, Richard, Male, Blue, 1918-05-11"
-    expect(@record.by_gender.last).to eq(last_listed)
-  end
-
-  it "should order list by birthdate" do
-    first_listed = "Hopper, Grace, Female, Red, 1906-12-09"
-    expect(@record.by_birthdate.first).to eq(first_listed)
-  end
-
-  it "should order list by birthdate" do
-    last_listed = "Kaku, Michio, Male, Green, 1947-01-24"
-    expect(@record.by_birthdate.last).to eq(last_listed)
-  end
-
-  it "should order list by lastname" do
-    first_listed = "Feynman, Richard, Male, Blue, 1918-05-11"
-    expect(@record.by_lastname.first).to eq(first_listed)
-  end
-
-  it "should order list by lastname" do
-    last_listed = "Kaku, Michio, Male, Green, 1947-01-24"
-    expect(@record.by_lastname.last).to eq(last_listed)
-  end
-
-  it "should add a new record" do
-    record = "Turning Alan Male Yellow 6 23 1912"
-    @record.add_to_list(record)
-    expect(@record.by_lastname.last).to eq("Turning, Alan, Male, Yellow, 1912-06-23")
+  it "should load the testing files" do
+    expect(Record.load_files.last.lastname).to eq("Feynman")
   end
 end

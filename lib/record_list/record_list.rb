@@ -7,7 +7,6 @@ module RecordList
     resource :records do
       desc "Return gender ordered records."
       get :gender do
-        p params.inspect
         PortalRecord.sort_by(:gender)
       end
 

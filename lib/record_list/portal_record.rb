@@ -8,7 +8,7 @@ class PortalRecord < Record
     def sort_by(sort_type)
       list = self.load_files
       sorted_list = SortList.load_by(sort_type, list)
-      BrowserDisplay.display_list(sorted_list)
+      PortalDisplay.display_list(sorted_list)
     end
   end
 end
