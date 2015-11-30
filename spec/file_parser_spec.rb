@@ -2,9 +2,10 @@ require_relative "../lib/record_list/console.rb"
 
 RSpec.describe "File Parser" do
 
-  before(:example) do
+  before(:context) do
     File.open('spec/test_data_single_sample', 'w') {|f| f << "Hicks Bill Male Green 12 16 1961\n"}
     File.open('spec/test_data_multiple_samples', 'w') {|f| f << "Kaku Michio Male Green 1 24 1947\nFeynman Richard Male Blue 5 11 1918\n"}
+
     @parser = FileParser.new(['spec/test_data_single_sample', 'spec/test_data_multiple_samples'])
     @data = "Kaku Michio Male Green 1 24 1947\n"
   end

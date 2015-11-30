@@ -48,3 +48,4 @@ class FileParser
     File.open(@files_list.last, 'a') {|f| f << record + "\n"}
   end
 end
+

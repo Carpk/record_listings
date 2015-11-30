@@ -16,26 +16,6 @@ RSpec.describe "PortalRecord" do
     File.open('config.rb', 'w') {|f| f << std_files}
   end
 
-
-  # it "should not return a value" do
-  #   expect(PortalRecord.load_listing("nil")).to eq(nil)
-  # end
-
-  # it "should return an array" do
-  #   expect(PortalRecord.load_listing("gender").class).to eq(Array)
-  # end
-
-  # it "should return an array" do
-  #   expect(PortalRecord.load_listing("birthdate").class).to eq(Array)
-  # end
-
-  # it "should return an array" do
-  #   expect(PortalRecord.load_listing("lastname").class).to eq(Array)
-  # end
-
-
-
-
   it "should order list by gender" do
     first_listed = "Hopper, Grace, Female, Red, 1906-12-09"
     expect(PortalRecord.sort_by("gender").first).to eq(first_listed)
