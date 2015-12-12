@@ -64,6 +64,11 @@ RSpec.describe "File Parser" do
     expect(@parser.remove_whitespace(data_array)).to eq(finished_array)
   end
 
+  it "should create a date" do
+    data_array = ["Kaku", "Michio", "Male", "Green", "1", "24", "1947"]
+    expect(@parser.create_date(data_array).class).to eq(Date)
+  end
+
   it "should return single array with no new line" do
     person_array = @parser.extract_data(@data)
     expect(person_array.last.lastname).to eq("Kaku")
