@@ -38,14 +38,15 @@ class FileParser
 
   def load_listed
     data = []
-    @files_list.each do |file|
+    Dir.glob(@files_list).each do |file|
       data.concat(read_file(file))
     end
     data
   end
 
   def add_to_file(record)
-    File.open(@files_list.last, 'a') {|f| f << record + "\n"}
+    list = Dir.glob(@files_list)
+    File.open(list.last, 'a') {|f| f << record + "\n"}
   end
 end
 

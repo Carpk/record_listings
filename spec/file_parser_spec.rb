@@ -3,20 +3,20 @@ require_relative "../lib/record_list/console.rb"
 RSpec.describe "File Parser" do
 
   before(:context) do
-    test_files = "module RecordData\n  Location = ['spec/test_data_single_sample', 'spec/test_data_multiple_samples']\nend\n"
+    test_files = "module RecordData\n  Location = 'spec/*_sample'\nend\n"
     File.open('config.rb', 'w') {|f| f << test_files}
 
     single_line = "Hicks Bill Male Green 12 16 1961\n"
     multi_line = "Kaku Michio Male Green 1 24 1947\nFeynman Richard Male Blue 5 11 1918\n"
     File.open('spec/test_data_single_sample', 'w') {|f| f << single_line}
-    File.open('spec/test_data_multiple_samples', 'w') {|f| f << multi_line}
+    File.open('spec/test_data_multiple_sample', 'w') {|f| f << multi_line}
 
     require_relative "../config.rb"
     @parser = FileParser.new
   end
 
   after(:context) do
-    std_files = "module RecordData\n  Location = ['data/comma_listed', 'data/pipe_listed', 'data/space_listed']\nend\n"
+    std_files = "module RecordData\n  Location = 'data/*_listed'\nend\n"
     File.open('config.rb', 'w') {|f| f << std_files}
   end
 
@@ -98,7 +98,7 @@ RSpec.describe "File Parser" do
   end
 
   it "should read multiple line test file" do
-    filename = 'spec/test_data_multiple_samples'
+    filename = 'spec/test_data_multiple_sample'
     finished_array = @parser.read_file(filename)
     expect(finished_array.last.lastname).to eq("Feynman")
   end
