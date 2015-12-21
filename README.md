@@ -10,7 +10,7 @@ Run the following commands from the root directory:
 
 1)`bundle`
 
-2)`rake server`
+2)`rake start`
 
 Use the following URL paths to query files:
 

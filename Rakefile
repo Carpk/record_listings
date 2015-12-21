@@ -8,6 +8,6 @@ task :run do
   ruby "bin/record_list"
 end
 
-task :server do
+task :start do
   exec("rackup bin/config.ru")
 end

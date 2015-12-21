@@ -13,6 +13,8 @@ RSpec.describe "File Parser" do
 
     require_relative "../config.rb"
     @parser = FileParser.new
+    # @parser.instance_variable_set(:@files_list, 'spec/*_sample')
+    puts @parser.inspect
   end
 
   after(:context) do
