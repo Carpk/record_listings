@@ -21,16 +21,21 @@ RSpec.describe "Sort List" do
 
   it "should sort list by birthdates" do
     ordered_array = SortList.load_by(:birthdate, @people_list)
-    expect(ordered_array.last.lastname).to eq("Schumer")
+    expect(ordered_array.first.lastname).to eq("Black")
   end
 
   it "should sort list by birthdates" do
     ordered_array = SortList.load_by(:birthdate, @people_list)
-    expect(ordered_array.first.lastname).to eq("Black")
+    expect(ordered_array.last.lastname).to eq("Schumer")
   end
 
   it "should sort list by last name" do
     ordered_array = SortList.load_by(:lastname, @people_list)
     expect(ordered_array.first.lastname).to eq("Black")
+  end
+
+  it "should sort list by last name" do
+    ordered_array = SortList.load_by(:lastname, @people_list)
+    expect(ordered_array.last.lastname).to eq("Schumer")
   end
 end

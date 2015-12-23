@@ -13,8 +13,6 @@ RSpec.describe "File Parser" do
 
     require_relative "../config.rb"
     @parser = FileParser.new
-    # @parser.instance_variable_set(:@files_list, 'spec/*_sample')
-    puts @parser.inspect
   end
 
   after(:context) do
@@ -31,7 +29,6 @@ RSpec.describe "File Parser" do
     finish_line = ["Kaku", "", "Michio", ""]
     expect(@parser.remove_delimiters(raw_line)).to eq(finish_line)
   end
-
 
   it "should return array from multiple spaced string" do
     raw_line = "Kaku Michio Green"

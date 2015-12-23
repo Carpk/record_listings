@@ -22,7 +22,7 @@ RSpec.describe "Person" do
     expect(@person.gender).to eq("Male")
   end
 
-  it "should create have a fovorite color" do
+  it "should create have a favorite color" do
     expect(@person.favcolor).to eq("Green")
   end
 
