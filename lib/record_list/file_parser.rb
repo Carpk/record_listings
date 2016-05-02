@@ -1,6 +1,7 @@
 require "csv"
 
 class FileParser
+  attr_reader :files_list
 
   def initialize
     @files_list = RecordData::Location
@@ -16,7 +17,7 @@ class FileParser
 
   def create_date(data_array)
     date_string = data_array[4..-1].join('-')
-    Date.strptime(date_string, '%m-%d-%Y')
+    create_date(date_string)
   end
 
   def extract_data(file)
@@ -25,27 +26,37 @@ class FileParser
       raw_array = remove_delimiters(line)
       data_array = remove_whitespace(raw_array)
       data_array[4..6] = create_date(data_array)
-      content << Person.new(data_array)
+      content << create_person(data_array)
     end
     content
   end
 
+  def create_person(person_data)
+    Person.new(person_data)
+  end
+
+  def create_date(date)
+    Date.strptime(date, '%m-%d-%Y')
+  end
+
   def read_file(file)
-    File.open(file, "r") do |file|
-      extract_data(file)
-    end
+    File.open(file, "r") { |file| extract_data(file) }
+  end
+
+  def data_files
+    Dir.glob(files_list)
   end
 
   def load_listed
     data = []
-    Dir.glob(@files_list).each do |file|
+    data_files.each do |file|
       data.concat(read_file(file))
     end
     data
   end
 
   def add_to_file(record)
-    list = Dir.glob(@files_list)
+    list = data_files
     File.open(list.last, 'a') {|f| f << record + "\n"}
   end
 end
