@@ -2,8 +2,7 @@ class PortalRecord < Record
   class << self
 
     def add_to_list(record)
-      parser = FileParser.new
-      parser.add_to_file(record)
+      FileParser.new.add_to_file(record)
     end
 
     def sort_by(sort_type)

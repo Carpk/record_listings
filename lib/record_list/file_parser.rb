@@ -1,23 +1,45 @@
 require "csv"
 
 class FileParser
-  attr_reader :files_list
 
   def initialize
     @files_list = RecordData::Location
   end
 
-  def remove_delimiters(data)
-    data.scan(/[\d\w]*/)
+  def load_listed
+    data = []
+    data_files.each do |file|
+      data.concat(read_file(file))
+    end
+    data
   end
 
-  def remove_whitespace(data_array)
-    data_array.reject { |e| e.to_s.empty? }
+  def add_to_file(record)
+    list = data_files
+    open_file(list.last, 'a') {|f| f << record + "\n"}
   end
 
-  def create_date(data_array)
-    date_string = data_array[4..-1].join('-')
-    create_date(date_string)
+  private
+  attr_reader :files_list
+
+  def create_person(person_data)
+    Person.new(person_data)
+  end
+
+  def create_date_object(date)
+    Date.strptime(date, '%m-%d-%Y')
+  end
+
+  def open_file(name, mode)
+    File.open(name, mode) {|f| yield(f) }
+  end
+
+  def data_files
+    Dir.glob(files_list)
+  end
+
+  def read_file(name)
+    open_file(name, "r") { |file| extract_data(file) }
   end
 
   def extract_data(file)
@@ -31,33 +53,17 @@ class FileParser
     content
   end
 
-  def create_person(person_data)
-    Person.new(person_data)
+  def create_date(data_array)
+    date_string = data_array[4..-1].join('-')
+    create_date_object(date_string)
   end
 
-  def create_date(date)
-    Date.strptime(date, '%m-%d-%Y')
+  def remove_whitespace(data_array)
+    data_array.reject { |e| e.to_s.empty? }
   end
 
-  def read_file(file)
-    File.open(file, "r") { |file| extract_data(file) }
-  end
-
-  def data_files
-    Dir.glob(files_list)
-  end
-
-  def load_listed
-    data = []
-    data_files.each do |file|
-      data.concat(read_file(file))
-    end
-    data
-  end
-
-  def add_to_file(record)
-    list = data_files
-    File.open(list.last, 'a') {|f| f << record + "\n"}
+  def remove_delimiters(data)
+    data.scan(/[\d\w]*/)
   end
 end
 
