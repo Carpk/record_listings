@@ -7,16 +7,13 @@ class FileParser
   end
 
   def load_listed
-    data = []
-    data_files.each do |file|
-      data.concat(read_file(file))
-    end
-    data
+    all_data = []
+    data_files.each { |file| all_data.concat(read_file(file)) }
+    all_data
   end
 
   def add_to_file(record)
-    list = data_files
-    open_file(list.last, 'a') {|f| f << record + "\n"}
+    open_file(data_files.last, 'a') {|f| f << record + "\n"}
   end
 
   private

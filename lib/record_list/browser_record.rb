@@ -1,4 +1,4 @@
-class PortalRecord < Record
+class BrowserRecord < Record
   class << self
 
     def add_to_list(record)
@@ -8,7 +8,7 @@ class PortalRecord < Record
     def sort_by(sort_type)
       sorted_list = self.load_listing(sort_type)
 
-      PortalDisplay.display_list(sorted_list)
+      BrowserDisplay.display_list(sorted_list)
     end
   end
 end

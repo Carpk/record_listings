@@ -1,4 +1,4 @@
-class PortalDisplay < RecordDisplay
+class BrowserDisplay < RecordDisplay
 
   def self.display_list(list)
     list.map { |person| self.create_text_of(person) }

@@ -1,6 +1,6 @@
 require_relative "../lib/record_list/console.rb"
 
-RSpec.describe "Portal Display" do
+RSpec.describe "Browser Display" do
 
 
   before(:example) do
@@ -10,11 +10,11 @@ RSpec.describe "Portal Display" do
   end
 
   it "should display single text line in array" do
-    expect(PortalDisplay.display_list(@single)).to eq(["Hicks, Bill, Male, Green, 1961-01-16"])
+    expect(BrowserDisplay.display_list(@single)).to eq(["Hicks, Bill, Male, Green, 1961-01-16"])
   end
 
   it "should display multiple text line in array" do
     multi = ["Hicks, Bill, Male, Green, 1961-01-16", "Black, Lewis, Male, Black, 1948-08-30"]
-    expect(PortalDisplay.display_list(@multiple)).to eq(multi)
+    expect(BrowserDisplay.display_list(@multiple)).to eq(multi)
   end
 end
