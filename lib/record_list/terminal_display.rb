@@ -14,7 +14,7 @@ class TerminalDisplay < RecordDisplay
 
     def results(data)
       data.each do |line|
-        str = self.create_string(line)
+        str = self.create_text_of(line)
         puts str
       end
     end

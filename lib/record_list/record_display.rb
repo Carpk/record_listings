@@ -1,9 +1,9 @@
 class RecordDisplay
 
-  def self.create_string(line)
-    ivars = line.instance_variables
-    str_ary = ivars.map { |ivar| line.send(ivar[1..-1]) }
+  def self.create_text_of(person)
+    attributes = person.instance_variables
+    traits_array = attributes.map { |attr| person.send(attr[1..-1]) }
 
-    str_ary.join(", ")
+    traits_array.join(RecordData::DividingString)
   end
 end
