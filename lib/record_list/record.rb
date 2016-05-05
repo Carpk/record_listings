@@ -1,8 +1,8 @@
 class Record
   class << self
 
-    def load_files
-      parser = FileParser.new
+    def load_files(filename_list = RecordData::Location)
+      parser = FileParser.new(filename_list)      
       parser.load_listed
     end
 

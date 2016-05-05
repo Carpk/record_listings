@@ -1,14 +1,14 @@
 require "rack/test"
 require 'spec_helper'
 
-describe RecordList::API do
+describe RecordController::API do
   include Rack::Test::Methods
 
   def app
-    RecordList::API
+    RecordController::API
   end
 
-  describe RecordList::API do
+  describe RecordController::API do
 
     describe "GET /records/gender" do
       it "returns an array of gender" do

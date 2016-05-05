@@ -3,22 +3,22 @@ require_relative "../lib/record_list/console.rb"
 RSpec.describe "File Parser" do
 
   before(:context) do
-    test_files = "module RecordData\n  Location = 'spec/*_sample'\nend\n"
-    File.open('config.rb', 'w') {|f| f << test_files}
+    # test_files = "module RecordData\n  Location = 'spec/*_sample'\nend\n"
+    # File.open('config.rb', 'w') {|f| f << test_files}
 
-    single_line = "Hicks Bill Male Green 12 16 1961\n"
-    multi_line = "Kaku Michio Male Green 1 24 1947\nFeynman Richard Male Blue 5 11 1918\n"
-    File.open('spec/test_data_single_sample', 'w') {|f| f << single_line}
-    File.open('spec/test_data_multiple_sample', 'w') {|f| f << multi_line}
+    #single_line = "Hicks Bill Male Green 12 16 1961\n"
+    #multi_line = "Kaku Michio Male Green 1 24 1947\nFeynman Richard Male Blue 5 11 1918\n"
+    #File.open('spec/test_data_single_sample', 'w') {|f| f << single_line}
+    #File.open('spec/test_data_multiple_sample', 'w') {|f| f << multi_line}
 
     require_relative "../config.rb"
     @parser = FileParser.new
   end
 
-  after(:context) do
-    std_files = "module RecordData\n  Location = 'data/*_listed'\nend\n"
-    File.open('config.rb', 'w') {|f| f << std_files}
-  end
+  # after(:context) do
+  #   std_files = "module RecordData\n  Location = 'data/*_listed'\nend\n"
+  #   File.open('config.rb', 'w') {|f| f << std_files}
+  # end
 
   it "should create object of the correct class" do
     expect(@parser.class).to eq(FileParser)
@@ -107,7 +107,7 @@ RSpec.describe "File Parser" do
     expect(finished_array.last.lastname).to eq("Feynman")
   end
 
-  it "should add record to test file" do
+  xit "should add record to test file" do
     record = "Bohr Niels Male Blue 10 7 1885"
     @parser.add_to_file(record)
     expect(@parser.load_listed.last.lastname).to eq("Bohr")

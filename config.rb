@@ -1,4 +1,4 @@
 module RecordData
   Location = 'data/*_listed'
-  DividingString = ", "
+  DividingString = ', '
 end

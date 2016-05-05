@@ -1,6 +1,6 @@
 require_relative "../lib/record_list/console.rb"
 
-RSpec.describe "Record Display" do
+RSpec.describe "Display" do
 
 
   before(:example) do
@@ -9,7 +9,7 @@ RSpec.describe "Record Display" do
 
   it "should list display options" do
     text = "Hicks, Bill, Male, Green, 1961-01-16"
-    expect(RecordDisplay.create_string(@data)).to eq(text)
+    expect(Display.create_string(@data)).to eq(text)
   end
 
 end

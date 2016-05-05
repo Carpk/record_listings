@@ -1,6 +1,6 @@
 require 'grape'
 
-module RecordList
+module RecordController
   class API < Grape::API
     format :json
 

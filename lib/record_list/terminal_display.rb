@@ -1,4 +1,4 @@
-class TerminalDisplay < RecordDisplay
+class TerminalDisplay < Display
   class << self
 
     def list_type_prompt

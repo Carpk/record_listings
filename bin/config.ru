@@ -4,4 +4,4 @@ require "record_list/console"
 require_relative '../config'
 require "rack"
 
-run RecordList::API
+run RecordController::API

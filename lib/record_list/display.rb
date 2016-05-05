@@ -1,4 +1,4 @@
-class RecordDisplay
+class Display
 
   def self.create_text_of(person)
     attributes = person.instance_variables

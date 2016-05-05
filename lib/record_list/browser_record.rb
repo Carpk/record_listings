@@ -2,7 +2,7 @@ class BrowserRecord < Record
   class << self
 
     def add_to_list(record)
-      FileParser.new.add_to_file(record)
+      FileParser.new(RecordData::Location).add_to_file(record)
     end
 
     def sort_by(sort_type)
