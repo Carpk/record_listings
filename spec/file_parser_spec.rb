@@ -2,63 +2,48 @@ require_relative "../lib/record_list/console.rb"
 
 RSpec.describe "File Parser" do
 
-  before(:context) do
-    # test_files = "module RecordData\n  Location = 'spec/*_sample'\nend\n"
-    # File.open('config.rb', 'w') {|f| f << test_files}
+  let(:parser) { FileParser.new 'spec/test_data'}
 
-    #single_line = "Hicks Bill Male Green 12 16 1961\n"
-    #multi_line = "Kaku Michio Male Green 1 24 1947\nFeynman Richard Male Blue 5 11 1918\n"
-    #File.open('spec/test_data_single_sample', 'w') {|f| f << single_line}
-    #File.open('spec/test_data_multiple_sample', 'w') {|f| f << multi_line}
-
-    require_relative "../config.rb"
-    @parser = FileParser.new
-  end
-
-  # after(:context) do
-  #   std_files = "module RecordData\n  Location = 'data/*_listed'\nend\n"
-  #   File.open('config.rb', 'w') {|f| f << std_files}
-  # end
 
   it "should create object of the correct class" do
-    expect(@parser.class).to eq(FileParser)
+    expect(parser.class).to eq(FileParser)
   end
 
   xit "should return array from single spaced string" do
     raw_line = "Kaku Michio"
     finish_line = ["Kaku", "", "Michio", ""]
-    expect(@parser.remove_delimiters(raw_line)).to eq(finish_line)
+    expect(parser.remove_delimiters(raw_line)).to eq(finish_line)
   end
 
   xit "should return array from multiple spaced string" do
     raw_line = "Kaku Michio Green"
     finish_line = ["Kaku", "", "Michio", "", "Green", ""]
-    expect(@parser.remove_delimiters(raw_line)).to eq(finish_line)
+    expect(parser.remove_delimiters(raw_line)).to eq(finish_line)
   end
 
   xit "should remove pipe from string" do
     raw_line = "Kaku | Michio"
     finish_line = ["Kaku", "", "", "", "Michio", ""]
-    expect(@parser.remove_delimiters(raw_line)).to eq(finish_line)
+    expect(parser.remove_delimiters(raw_line)).to eq(finish_line)
   end
 
 
   xit "should remove multiple pipes from string" do
     raw_line = "Kaku | Michio | Green"
     finish_line = ["Kaku", "", "", "", "Michio", "", "", "", "Green", ""]
-    expect(@parser.remove_delimiters(raw_line)).to eq(finish_line)
+    expect(parser.remove_delimiters(raw_line)).to eq(finish_line)
   end
 
   xit "should remove comma from string" do
     raw_line = "Kaku, Michio"
     finish_line = ["Kaku", "", "", "Michio", ""]
-    expect(@parser.remove_delimiters(raw_line)).to eq(finish_line)
+    expect(parser.remove_delimiters(raw_line)).to eq(finish_line)
   end
 
   xit "should remove multiple commas from string" do
     raw_line = "Kaku, Michio, Green"
     finish_line = ["Kaku", "", "", "Michio", "", "", "Green", ""]
-    expect(@parser.remove_delimiters(raw_line)).to eq(finish_line)
+    expect(parser.remove_delimiters(raw_line)).to eq(finish_line)
   end
 
   xit "should remove single empty string from array" do
@@ -103,7 +88,7 @@ RSpec.describe "File Parser" do
   end
 
   it "should read test files from initialize" do
-    finished_array = @parser.load_listed
+    finished_array = parser.load_listed
     expect(finished_array.last.lastname).to eq("Feynman")
   end
 

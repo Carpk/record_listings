@@ -1,4 +1,5 @@
-class TerminalRecord < Record
+module TerminalRecord 
+  extend Record
   class << self
 
     def run

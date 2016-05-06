@@ -1,4 +1,5 @@
-class TerminalDisplay < Display
+module TerminalDisplay
+  extend Display
   class << self
 
     def list_type_prompt
