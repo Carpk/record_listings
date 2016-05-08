@@ -1,4 +1,4 @@
-class SortList
+module SortList
   class << self
 
     def load_by(load_type, list)

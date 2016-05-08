@@ -14,9 +14,9 @@ module TerminalDisplay
     end
 
     def results(data)
-      data.each do |line|
-        str = self.create_text_of(line)
-        puts str
+      data.each do |person|
+        data_string = create_text_of(person)
+        puts data_string
       end
     end
   end

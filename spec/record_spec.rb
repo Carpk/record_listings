@@ -8,10 +8,10 @@ RSpec.describe "Record" do
 
   it "should load the testing files" do
   puts dummy_class.methods
-    expect(dummy_class.load_files(test_file).first.firstname).to eq("Michio")
+    expect(dummy_class.load_listing("birthdate", test_file).first.firstname).to eq("Grace")
   end
 
   it "should load the testing files" do
-    expect(dummy_class.load_files(test_file).last.lastname).to eq("Feynman")
+    expect(dummy_class.load_listing("lastname", test_file).last.lastname).to eq("Kaku")
   end
 end
