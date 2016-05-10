@@ -1,6 +1,6 @@
 module TerminalRecord 
-  extend Record
   class << self
+    include Record
 
     def run
       TerminalDisplay.list_type_prompt
