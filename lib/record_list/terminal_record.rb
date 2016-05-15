@@ -3,12 +3,15 @@ module TerminalRecord
     include Record
 
     def run
-      TerminalDisplay.list_type_prompt
+      TerminalDisplay.sort_style_request
       sort_type = gets.chomp.downcase
 
-      sorted_list = load_listing(sort_type)
+      sort_by(sort_type)
+    end
 
-      sorted_list ? TerminalDisplay.results(sorted_list) : TerminalDisplay.entry_error
+    def sort_by(sort_style, file_location = RecordData::Location)
+      sorted_list = load_listing(sort_style, file_location)
+      sorted_list ? TerminalDisplay.results_of(sorted_list) : TerminalDisplay.entry_error
     end
   end
 end
