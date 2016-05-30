@@ -23,7 +23,7 @@ RSpec.describe "Person" do
   end
 
   it "should create have a favorite color" do
-    expect(@person.favcolor).to eq("Green")
+    expect(@person.color).to eq("Green")
   end
 
   it "should have date for birthdate" do

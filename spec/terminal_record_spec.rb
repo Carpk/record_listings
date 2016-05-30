@@ -2,7 +2,7 @@ require_relative "../lib/record_list/console.rb"
 
 RSpec.describe "TerminalRecord" do
 
-  let(:test_file) {'spec/test_data'}
+  let(:test_file) {'spec/test_db/test_data'}
 
 
   it "should not return a value" do

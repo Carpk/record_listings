@@ -13,3 +13,4 @@ module BrowserRecord
     end
   end
 end
+
