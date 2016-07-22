@@ -1,5 +1,7 @@
 #Record List
 
+Record listings was a code challenge from late '15. The object of this challenge was to start with a terminal interface that could bring up a list of users and sort them by attribute. User lists are saved in 3 separate files, each using a different syntax. Once this portion was completed, a [grape API](https://github.com/ruby-grape/grape) was to be implemented and data query types were sent through the URL. Bonus points were supposedly given for posting a record and having it saved in the database.
+
 ##Requirements
 
 Ruby 2.2.2, Rack, Grape
