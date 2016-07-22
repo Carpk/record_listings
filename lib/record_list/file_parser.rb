@@ -7,9 +7,7 @@ class FileParser
   end
 
   def load_listed
-    all_data = []
-    data_files.each { |file| all_data.concat(read_file(file)) }
-    all_data
+    data_files.map { |file| read_file(file) }.flatten
   end
 
   def add_to_file(record)
