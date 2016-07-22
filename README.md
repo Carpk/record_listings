@@ -8,11 +8,17 @@ Ruby 2.2.2, Rack, Grape
 
 ##Getting Started
 
-Run the following commands from the root directory:
+This app can be used with a terminal or a browser interface. Run Bundler to install the needed gems:
 
 1)`bundle`
 
-2)`rake start`
+To use the terminal interface:
+
+2a)`rake run`
+
+To use the browser interface:
+
+2b)`rake start`
 
 Use the following URL paths to query files:
 
@@ -24,16 +30,16 @@ Use the following URL paths to query files:
 
 To post a record, use curl in another terminal session, with the following format:
 
-record="lastname firstname gender favcolor birthmonth birthday birthyear"
+record="last-name first-name gender fav-color birth-month birth-day birth-year"
 
 Example:
 
 `curl --form record="Black Lewis Male Black 8 30 1948" http://localhost:9292/records`
 
+## Testing
+
 To run tests:
 
 `rake rspec`
 
-To run the application in terminal:
 
-`rake run`
