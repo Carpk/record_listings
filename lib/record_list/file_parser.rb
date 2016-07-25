@@ -15,7 +15,6 @@ class FileParser
   end
 
   private
-  attr_reader :files_list
 
   def create_person(person_data)
     Person.new(person_data)
@@ -30,7 +29,7 @@ class FileParser
   end
 
   def data_files
-    Dir.glob(files_list)
+    Dir.glob(@files_list)
   end
 
   def read_file(name)

@@ -26,7 +26,7 @@ Use the following URL paths to query files:
 
 [GET /records/birthdate](http://localhost:9292/records/birthdate)
 
-[GET /records/name](http://localhost:9292/records/lastname)
+[GET /records/lastname](http://localhost:9292/records/lastname)
 
 To post a record, use curl in another terminal session, with the following format:
 
